@@ -7,15 +7,16 @@
     "lit-element": "^2.2.1",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "reactify-wc": "^1.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
-    "babel-loader": "^8.0.6",
     "@researchgate/babel-plugin-transform-scss-import-to-string": "^1.0.0",
+    "babel-loader": "^8.0.6",
     "design-system": "git+ssh://git@github.com/theiconic/design-system.git#2.0.1"
   },
   "scripts": {

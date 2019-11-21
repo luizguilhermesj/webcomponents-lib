@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _checkbox = _interopRequireDefault(require("../../webcomponents/checkbox"));
+require("../../webcomponents/checkbox");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -29,47 +29,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// import reactifyWc from "reactify-wc";
+// export default reactifyWc("ds-checkbox");
 var Checkbox =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Checkbox, _React$Component);
 
-  function Checkbox(props) {
-    var _this;
-
+  function Checkbox() {
     _classCallCheck(this, Checkbox);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Checkbox).call(this, props));
-    _this.state = {
-      checked: false
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Checkbox).apply(this, arguments));
   }
 
   _createClass(Checkbox, [{
-    key: "toggle",
-    value: function toggle() {
-      console.log('[REACT] toggle', this.state.checked, ' -> ', !this.state.checked);
-      this.setState({
-        checked: !this.state.checked
-      });
-      this.forceUpdate();
-    }
-  }, {
-    key: "change",
-    value: function change(state) {
-      console.log('[REACT] change to', state);
-    }
-  }, {
     key: "render",
     value: function render() {
-      console.log('[REACT] render', this.state.checked);
-      return _react["default"].createElement("div", null, _react["default"].createElement("ds-checkbox", {
-        checked: this.state.checked ? 'checked' : '',
-        onClick: this.toggle.bind(this)
-      }, _react["default"].createElement("span", null, "CHILD")), _react["default"].createElement("button", {
-        onClick: this.toggle.bind(this)
-      }));
+      return _react["default"].createElement("ds-checkbox", this.props);
     }
   }]);
 
