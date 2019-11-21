@@ -26,7 +26,7 @@ export default class Checkbox extends React.Component {
   render() {
     console.log('[REACT] render', this.state.checked);
     return <div>
-      <ds-checkbox 
+      <ds-checkbox
         checked={this.state.checked ? 'checked' : ''}
         onClick={this.toggle.bind(this)}
       >

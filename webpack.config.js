@@ -1,66 +1,56 @@
 const path = require('path');
+const glob_entries = require('webpack-glob-entries');
+const glob = require("glob");
+var fs = require('fs');
+const entry = glob_entries('./src/**/*.js');
+
+// const entry = glob.sync("./src/**/*.js").reduce((acc, file) => {
+//   acc[file.replace(/^\.\/src\//, "")] = file;
+//   return acc;
+// }, {});
+
+
+// const entry = fs.readdirSync('./src/').filter(function(file) {
+//   return file.match(/.*\.js$/);
+// }).map((file) => {
+//   return './src/'+file;
+// });
+console.log(entry);
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: './src/index.js',
+  entry,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
       {
-        test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
-      },
-
-      // Transforming SCSS file into CSS string
-      {
-        test: /\.scss$/,
-        use: [
-          'raw-loader',
+         test: /\.css|\.s(c|a)ss$/,
+         use: [
           {
-            loader: 'sass-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              includePaths: [path.resolve(__dirname, 'node_modules')]
-            }
-          }
-        ]
-      },
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
+       },
     ]
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    }),
+  ],
   mode: 'development',
 }
-
-
-module.exports = {
-
-  entry: { /* config */ },
-
-  output: { /* config */ },
-
-  module: {
-    rules: [
-      // Regular css files
-      {
-        test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
-      },
-
-      // Transforming SCSS file into CSS string
-      {
-        test: /\.scss$/,
-        use: [
-          'raw-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [path.resolve(__dirname, 'node_modules')]
-            }
-          }
-        ]
-      },
-    ]
-  },
-  plugins: [],
-};

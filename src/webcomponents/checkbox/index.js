@@ -1,16 +1,16 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css, unsafeCSS } from 'lit-element';
+import style from './style.scss';
 
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(style);
+
+console.log(style);
 
 export default class CheckboxWC extends LitElement {
   constructor() {
       super();
 
       this.shadowRoot.appendChild(document.createElement('slot'));
-  }
-
-  createRenderRoot() {
-    this.attachShadow({mode: "open"});
-    return this;
   }
 
   static get properties() {
@@ -22,11 +22,15 @@ export default class CheckboxWC extends LitElement {
     }
   }
 
+  static get styles() {
+    return css`${unsafeCSS(style)}`;
+  }
+
   render() {
     console.log('[WC] render', this.checked);
     return html`
-      <input type="checkbox" class="red" .checked="${this.checked}" />
-      <span class="">Checkbox</span>
+      <input type="checkbox" class="form__checkbox" .checked="${this.checked}" />
+      <label class="form__label"/>
     `;
   }
 }

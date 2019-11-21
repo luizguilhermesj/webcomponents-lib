@@ -67,7 +67,7 @@ function (_React$Component) {
       return _react["default"].createElement("div", null, _react["default"].createElement("ds-checkbox", {
         checked: this.state.checked ? 'checked' : '',
         onClick: this.toggle.bind(this)
-      }, _react["default"].createElement("span", null, "Ola")), _react["default"].createElement("button", {
+      }, _react["default"].createElement("span", null, "CHILD")), _react["default"].createElement("button", {
         onClick: this.toggle.bind(this)
       }));
     }
