@@ -1,5 +1,6 @@
 {
   "presets": [
+    ["@babel/env"]
   ],
   "plugins": [
     ["@researchgate/babel-plugin-transform-scss-import-to-string"]

@@ -17,6 +17,7 @@
     "@babel/preset-react": "^7.7.0",
     "@researchgate/babel-plugin-transform-scss-import-to-string": "^1.0.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-es2017": "^6.24.1",
     "design-system": "git+ssh://git@github.com/theiconic/design-system.git#2.0.1"
   },
   "scripts": {
